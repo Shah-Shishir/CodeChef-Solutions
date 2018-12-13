@@ -48,8 +48,6 @@ int ClearBit (int n, int x) { return n & ~(1 << x); }
 int ToggleBit (int n, int x) { return n ^ (1 << x); }
 bool CheckBit (int n, int x) { return (bool)(n & (1 << x)); }
 
-char str[100005];
-
 ebar_khela_hoppe
 {
     /*
