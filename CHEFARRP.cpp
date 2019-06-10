@@ -76,7 +76,7 @@ jeno_joyer_khuda_thake
 		freopen ("output.txt","w",stdout);
     */
 
-    int tc,n,i,j,k,ans;
+    int tc,n,i,j,sum,pro,ans;
 
     cin >> tc;
 
@@ -84,34 +84,31 @@ jeno_joyer_khuda_thake
     {
         cin >> n;
 
-        vi sum(n+1),pro(n+1);
+        vi v(n+1);
 
         for (i=1; i<=n; i++)
-        {
-            cin >> k;
-
-            pro[0] = 1;
-
-            if (i == 1)
-                sum[i] = pro[i] = k;
-            else
-            {
-                sum[i] = sum[i-1] + k;
-                pro[i] = pro[i-1] * k;
-            }
-        }
+            cin >> v[i];
 
         ans = 0;
 
         for (i=1; i<=n; i++)
-            for (j=i; j>=1; j--)
-                if ((sum[i] - sum[j-1] == pro[i] / pro[j-1]) && (pro[i] % pro[j-1] == 0))
+        {
+            sum = 0;
+            pro = 1;
+
+            for (j=i; j<=n; j++)
+            {
+                sum += v[j];
+                pro *= v[j];
+
+                if (sum == pro)
                     ++ans;
+            }
+        }
 
         cout << ans << endl;
 
-        cl(sum);
-        cl(pro);
+        cl(v);
     }
 
     kaj_shesh;
